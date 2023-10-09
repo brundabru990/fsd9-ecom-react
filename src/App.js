@@ -1,24 +1,18 @@
-import logo from './logo.svg';
+import { Outlet, useNavigation } from "react-router-dom";
 import './App.css';
+import Navbar from "./app/pages/Navbar/Navbar";
 
 function App() {
+  const { state } = useNavigation();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Navbar></Navbar>
+     <Outlet />
+    {/* <main style={{ marginBlock: "60px", flexGrow: 1, position: "relative" }}>
+                    {state === "loading"}
+                   
+      </main> */}
+    </>
   );
 }
 
