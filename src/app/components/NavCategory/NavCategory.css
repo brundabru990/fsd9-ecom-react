@@ -1,0 +1,43 @@
+ 
+.nav-cat-container{
+    /* display: flex;
+    justify-content: center; */
+    margin: 0 9vw;
+}
+
+.nav-cat-box{
+    /* position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    z-index: 10000;
+    min-height: 40px;
+    color: #111112; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9vw, 1fr));
+    gap: 10px;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+
+.nav-box{
+    /* min-width: 90px;
+    padding: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    box-sizing: content-box; */
+    text-align: center;
+    padding: 10px; 
+} 
+
+ .box-center{
+    display: grid
+ }
+ .box-center-div{
+    place-self: center;
+ }
+ .box-center>span{
+    font-weight: 600;
+ }
