@@ -23,8 +23,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="#">
+        fsd9@jain.university.com
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -50,34 +50,18 @@ export default function Registration() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);    
+    const _formData = new FormData(event.currentTarget);    
 
-    const payload = JSON.stringify({
-      firstName: data.get('firstName'),
-      lastName: data.get('lastName'),
-      dob: data.get('dob'),
-      role: data.get('role'),
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-
-    // const requestOptions = {
-    //   method: 'POST',
-    //   headers: myHeaders,
-    //   body: payload,
-    //   redirect: 'follow'
-    // };
-    
-    // // console.log({
-    // //   firstName: data.get('firstName'),
-    // //   lastName: data.get('lastName'),
-    // //   dob: data.get('dob'),
-    // //   role: data.get('role'),
-    // //   email: data.get('email'),
-    // //   password: data.get('password'),
-    // // })
-
-    postApiForRegistration(payload)
+    postApiForRegistration(
+        JSON.stringify({
+            firstName: _formData.get('firstName'),
+            lastName: _formData.get('lastName'),
+            dob: _formData.get('dob'),
+            role: _formData.get('role'),
+            email: _formData.get('email'),
+            password: _formData.get('password'),
+          })
+    )
     .then(response => {
         setSeverity('success')
          console.log(response)
@@ -86,18 +70,7 @@ export default function Registration() {
         console.log(error.message);
         setSeverity('error') 
     });
-
-    // fetch("http://localhost:8080/api/v1/auth/register", requestOptions)
-    //   .then(response => response.text())
-    //   .then(result => {
-    //     setSeverity('success')
-    //     console.log(result)
-    //     setOpen(true);
-    //   }).catch(error => {
-    //     setSeverity('error')
-    //     console.log('error', error)
-    //     setOpen(true)
-    //   });
+ 
   };
 
   return (
