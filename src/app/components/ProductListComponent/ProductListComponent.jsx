@@ -21,7 +21,7 @@ const ProductListComponent = () => {
 
     return (
         <>
-            <div className="d-md-flex flex-md-equal w-100  home-products">
+            <div className="home-products">
 
                 {productList ? (
                     <>
@@ -31,7 +31,7 @@ const ProductListComponent = () => {
                               
                                     <div className="col p-2">
                                         <div className="card h-100">
-                                           <div className='product-img-box'> <img src={product.imgUrl} style={{height:'200px',width:'200px'}} className="card-img-top" alt="..." /></div>
+                                           <div className='product-img-box'> <img src={product.imgUrl} style={{height:'200px',maxWidth:'200px'}} className="card-img-top" alt="..." /></div>
                                             <div className="card-body">
                                                 <h5 className="card-title text-truncate">{product.name}</h5>
                                                 <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
