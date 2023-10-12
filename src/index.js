@@ -11,6 +11,7 @@ import NotFoundPage from './app/pages/NotFound/NotFoundPage';
 import Home from './app/pages/Home/Home';
 import App from './App';
 import Login,{ action as loginAction } from './app/pages/Authentication/Login/Login'; 
+import Registration from './app/pages/Authentication/Registeration/Registration';
 
 
 
@@ -37,7 +38,7 @@ const router = createBrowserRouter(
       //     { path: ":categorySlug", element: <Category /> },
       //   ],
       // },  
-      // { path: "register", element: <Register /> },
+      { path: "register", element: <Registration /> },
        { path: "login", element: <Login />, action: loginAction },
       // { path: "forgot-password", element: <ForgotPassword /> },
       { path: "*", element: <NotFoundPage /> },
