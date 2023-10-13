@@ -39,7 +39,7 @@ const router = createBrowserRouter(
       //   ],
       // },  
       { path: "register", element: <Registration /> },
-       { path: "login", element: <Login />, action: loginAction },
+      { path: "login", element: <Login />, action: loginAction },
       // { path: "forgot-password", element: <ForgotPassword /> },
       { path: "*", element: <NotFoundPage /> },
     ],
