@@ -63,11 +63,13 @@ export default function Registration() {
           })
     )
     .then(response => {
+        setOpen(true);
         setSeverity('success')
          console.log(response)
     })
     .catch(error => {
-        console.log(error.message);
+        console.log(error.response.data.message);
+        setOpen(true);
         setSeverity('error') 
     });
  

@@ -11,14 +11,11 @@ import NotFoundPage from './app/pages/NotFound/NotFoundPage';
 import Home from './app/pages/Home/Home';
 import App from './App';
 import Login, { action as loginAction } from './app/pages/Authentication/Login/Login';
-import Registration from './app/pages/Authentication/Registeration/Registration';
-import Layout from './app/pages/Dashboard/Layout';
-import Products from './app/pages/Dashboard/Pages/Products'; 
-import { Dashboard } from './app/pages/Dashboard/Dashboard';
+import Registration from './app/pages/Authentication/Registeration/Registration';   
 import CategoriesLayout from './app/pages/CategoriesLayout/CategoriesLayout';
 import ProductCategory from './app/pages/CategoriesLayout/Category/ProductCategory';
 import ProductsLayout from './app/pages/ProductsLayout/ProductsLayout';
-import ProductDetail from './app/pages/ProductsLayout/ProductDetail/ProductDetail';
+import ProductDetail from './app/pages/ProductsLayout/ProductDetail/ProductDetail'; 
 
 
 
@@ -26,15 +23,14 @@ const router = createBrowserRouter(
   [
     {
       element: <App />,
-      errorElement: <NotFoundPage />,
-      // eslint-disable-next-line no-sparse-arrays
+      errorElement: <NotFoundPage />, 
       children: [
         { index: true, element: <Home /> },
         {
           path: "products",
           element: <ProductsLayout />,
           children: [
-            { index: true, element: <Products /> },
+            // { index: true, element: <ProductComponent /> },
             { path: ":id", element: <ProductDetail />  },
           ],
         },
@@ -47,14 +43,14 @@ const router = createBrowserRouter(
           ],
         },
         { path: "register", element: <Registration /> },
-        { path: "login", element: <Login />, action: loginAction },
+        { path: "login", element: <Login />},
         // { path: "forgot-password", element: <ForgotPassword /> },
-        {
-          path: "seller", element: <Layout />, children: [
-            { index: true, element: <Dashboard /> },
-            { path: "products", element: <Products /> },
-          ]
-        }, ,
+        // {
+        //   path: "seller", element: <Layout />, children: [
+        //     { index: true, element: <Dashboard /> },
+        //     { path: "products", element: <Products /> },
+        //   ]
+        // },
         { path: "*", element: <NotFoundPage /> }
       ],
     }

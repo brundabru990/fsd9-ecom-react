@@ -52,3 +52,7 @@ export const fetchProductDetail = async (prodId) => {
 export const postApiForRegistration = (payload) => {
     return axios.post(`${BASE_URL}${API_URLS.REGISTER}`, payload, DEFAULT_CONFIG);
 }
+
+export const postApiForLogin = (payload) => {
+    return axios.post(`${BASE_URL}${API_URLS.LOGIN}`, payload, DEFAULT_CONFIG);
+}

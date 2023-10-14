@@ -16,7 +16,8 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Alert } from "@mui/material";
+import { Alert, Snackbar } from "@mui/material";
+import { postApiForLogin } from "../../../Api/HttpApi";
 
 function Copyright(props) {
   return (
@@ -34,40 +35,64 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 function Login() {
-  const { state } = useNavigation();
-  const navigate = useNavigate();
-  const actionData = useActionData();
+  const [open, setOpen] = useState(false);
+  const [severity,setSeverity] = useState('success');
+  const [authMsg,setAuthMsg] = useState('');
 
-  useEffect(() => {
-    if (actionData?.status === "success") {
+  // useEffect(() => {
+  //   if (actionData?.status === "success") {
 
-      localStorage.setItem("userToken", actionData.data.token);
-    }
-  }, [actionData?.status, actionData?.data, navigate]);
+  //     localStorage.setItem("userToken", actionData.data.token);
+  //   }
+  // }, [actionData?.status, actionData?.data, navigate]);
 
+  const handleClose = (event, reason) => { 
+    setOpen(false);
+  };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const _formData = new FormData(event.currentTarget);    
+
+    postApiForLogin(
+        JSON.stringify({
+             username: _formData.get('username'), 
+            password: _formData.get('password'),
+          })
+    )
+    .then(response => {
+      setAuthMsg('Login Successfully!!');
+      setOpen(true);
+      setSeverity('success');
+       console.log(response)
+  })
+  .catch(error => {
+      let msg = error.message;
+      if(error?.response?.data?.message){
+        msg = error.response.data.message;
+      }
+      console.log(msg);
+      setAuthMsg(msg)
+      setOpen(true);    
+      setSeverity('error') 
+  });
+ 
+  };
 
   return (
     <>
       <ThemeProvider theme={defaultTheme}>
-        <Grid container component="main" sx={{ height: '100vh' }}>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}  anchorOrigin={{'vertical':'top', 'horizontal':'center' }}>
+          <Alert severity={severity} sx={{ width: '100%' }}>
+            {authMsg}
+          </Alert>
+        </Snackbar>
+
+        <Grid container component="main" className="d-flex align-items-center justify-content-center" sx={{ height: '100vh' }}>
           <CssBaseline />
-          <Grid
-            item
-            xs={false}
-            sm={4}
-            md={7}
-            sx={{
-              backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
-              backgroundRepeat: 'no-repeat',
-              backgroundColor: (t) =>
-                t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          />
-          <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-            <Form method="POST">
+           
+          <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square>
+            
               <Box
                 sx={{
                   my: 8,
@@ -83,12 +108,13 @@ function Login() {
                 <Typography component="h1" variant="h5">
                   Sign in
                 </Typography>
-                {
+                {/* {
                   actionData?.status === "error" && <Alert severity="error" sx={{ width: '100%' }}>
                     {actionData?.data}
                   </Alert>
-                }
-                <Box component="form" sx={{ mt: 1 }}>
+                } */}
+               
+                <Box component="form"  noValidate  onSubmit={handleSubmit} sx={{ mt: 1 }} >
                   <TextField
                     margin="normal"
                     required
@@ -136,7 +162,7 @@ function Login() {
                   <Copyright sx={{ mt: 5 }} />
                 </Box>
               </Box>
-            </Form>
+          
           </Grid>
         </Grid>
       </ThemeProvider>
@@ -144,16 +170,16 @@ function Login() {
   );
 }
 
-export async function action({ request }) {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
+// export async function action({ request }) {
+//   const formData = await request.formData();
+//   const data = Object.fromEntries(formData);
 
-  try {
-    const res = await axios.post("http://localhost:8080/api/v1/auth/login", data);
-    return { status: "success", data: res.data };
-  } catch (err) {
-    return { status: "error", data: err?.response?.data?.message };
-  }
-}
+//   try {
+//     const res = await axios.post("http://localhost:8080/api/v1/auth/login", data);
+//     return { status: "success", data: res.data };
+//   } catch (err) {
+//     return { status: "error", data: err?.response?.data?.message };
+//   }
+// }
 
 export default Login;

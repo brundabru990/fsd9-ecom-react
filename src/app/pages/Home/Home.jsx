@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home.css';
+import './Home.module.css';
 import NavCateogry from '../../components/NavCategory/NavCategory';
 import CarouselComponent from '../../components/Carousel/CarouselComponent';  
 import ProductListComponent from '../../components/ProductListComponent/ProductListComponent';
