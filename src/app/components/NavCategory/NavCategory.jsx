@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import './NavCategory.css';
 import { fetchAllCategory } from '../../Api/HttpApi';
+import { Link } from 'react-router-dom';
 
-const NavCatBoxComponent = ({ category }) => {
+const NavCatBoxComponent = ({ category }) => { 
+   
+
     return (
         <div className="nav-box">
             <div className='box-center'>
                 <div className="box-center-div" style={{ width: '64px', height: '64px' }}>
-                    <img src={category.imgUrl} alt="product" />
+                    <Link to={`/category/${category.id}`}>
+                        <img src={category.imgUrl} alt="product" >
+
+
+                        </img>
+                    </Link>
                 </div>
                 <span>
                     {category.name}
@@ -17,7 +25,7 @@ const NavCatBoxComponent = ({ category }) => {
     );
 }
 
-const NavCateogry = () => { 
+const NavCateogry = () => {
     const [productCategories, setProductCategories] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
@@ -42,7 +50,7 @@ const NavCateogry = () => {
                 {productCategories ? (
                     <>
                         {productCategories.map(category => (
-                            <NavCatBoxComponent category={category}></NavCatBoxComponent>
+                            <NavCatBoxComponent category={category} key={category.id}></NavCatBoxComponent>
                         ))}
 
                     </>
