@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { fetchAllProduct } from '../../Api/HttpApi';
 import './ProductListComponent.css';
+import productsData from "../../../assets/json/productsData.json"
 import ProductComponent from './ProductComponent/ProductComponent';
 
-const ProductListComponent = () => {
+const ProductListComponent = (props) => {
 
-    const [productList, setProductList] = useState([]);
+    const [productList, setProductList] = useState(productsData);
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const _data = await fetchAllProduct();
-                setProductList(_data);
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        fetchData();
+        // const fetchData = async () => {
+        //     try {
+        //         const _data = await fetchAllProduct();
+        //         setProductList(_data);
+        //     } catch (error) {
+        //         console.log(error)
+        //     }
+        // }
+        // fetchData();
     }, []);
 
 
