@@ -28,6 +28,27 @@ export const fetchAllProduct = async () => {
     }
 } 
 
+export const fetchProductByCategory = async (catgId) => {
+    try {
+        const response = await axios.get(`${BASE_URL}${API_URLS.PRODUCTS_BU_CATEGORY}/${catgId}`);
+        return response.data;
+        
+    } catch (error) {
+        console.log(error.message);
+    }
+} 
+
+export const fetchProductDetail = async (prodId) => {
+    try {
+        const response = await axios.get(`${BASE_URL}${API_URLS.ALL_PRODUCT}/${prodId}`);
+        return response.data;
+        
+    } catch (error) {
+        console.log(error.message);
+    }
+} 
+
+
 export const postApiForRegistration = (payload) => {
     return axios.post(`${BASE_URL}${API_URLS.REGISTER}`, payload, DEFAULT_CONFIG);
 }

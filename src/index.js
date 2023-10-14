@@ -12,6 +12,8 @@ import Home from './app/pages/Home/Home';
 import App from './App';
 import Login,{ action as loginAction } from './app/pages/Authentication/Login/Login'; 
 import Registration from './app/pages/Authentication/Registeration/Registration';
+import CategoriesLayout from './app/pages/CategoriesLayout/CategoriesLayout';  
+import ProductCategory from './app/pages/CategoriesLayout/Category/ProductCategory';
 
 
 
@@ -30,14 +32,14 @@ const router = createBrowserRouter(
       //     { path: ":productId", element: <Product />, loader: productLoader },
       //   ],
       // },
-      // {
-      //   path: "categories",
-      //   element: <CategoriesLayout />,
-      //   children: [
-      //     { index: true, element: <Categories /> },
-      //     { path: ":categorySlug", element: <Category /> },
-      //   ],
-      // },  
+      {
+        path: "category",
+        element: <CategoriesLayout />,
+        children: [
+          // { index: true, element: <Categories /> },
+          { path: ":id", element: <ProductCategory /> },
+        ],
+     },  
       { path: "register", element: <Registration /> },
        { path: "login", element: <Login />, action: loginAction },
       // { path: "forgot-password", element: <ForgotPassword /> },
