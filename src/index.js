@@ -12,6 +12,10 @@ import Home from './app/pages/Home/Home';
 import App from './App';
 import Login,{ action as loginAction } from './app/pages/Authentication/Login/Login'; 
 import Registration from './app/pages/Authentication/Registeration/Registration';
+import Layout from './app/pages/Dashboard/Layout';
+import Products from './app/pages/Dashboard/Pages/Products';
+import ProductListComponent from './app/components/ProductListComponent/ProductListComponent';
+import { Dashboard } from './app/pages/Dashboard/Dashboard';
 
 
 
@@ -41,7 +45,12 @@ const router = createBrowserRouter(
       { path: "register", element: <Registration /> },
       { path: "login", element: <Login />, action: loginAction },
       // { path: "forgot-password", element: <ForgotPassword /> },
+      { path: "seller", element: <Layout/>, children: [
+        { index: true, element: <Dashboard/>},
+        { path: "products", element: <Products/>},
+      ]},,
       { path: "*", element: <NotFoundPage /> },
+      { path: "products", element: <Products /> }
     ],
   }
   // createRoutesFromElements(

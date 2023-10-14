@@ -3,7 +3,6 @@ import './Home.css';
 import NavCateogry from '../../components/NavCategory/NavCategory';
 import CarouselComponent from '../../components/Carousel/CarouselComponent';  
 import ProductListComponent from '../../components/ProductListComponent/ProductListComponent';
-
 const Home = () => { 
 
   return (
