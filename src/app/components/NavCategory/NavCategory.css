@@ -2,7 +2,11 @@
 .nav-cat-container{
     /* display: flex;
     justify-content: center; */
-    margin: 0 9vw;
+    /* margin: 0 9vw; */  
+    
+        padding-bottom: 5px;
+        border-bottom: 1px solid lightgray;
+    
 }
 
 .nav-cat-box{
@@ -18,7 +22,8 @@
     grid-template-columns: repeat(auto-fill, minmax(9vw, 1fr));
     gap: 10px;
     background-color: #fff;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
+    margin:0 9vw;
 }
 
 .nav-box{

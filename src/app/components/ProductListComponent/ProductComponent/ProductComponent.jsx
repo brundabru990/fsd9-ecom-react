@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
  
 
 const ProductComponent = ({product})=>{
@@ -21,6 +23,9 @@ const ProductComponent = ({product})=>{
         <>
 
             <div className="col p-2"  key={product.id}>
+                <Link to={`/products/${product.id}`}>
+                
+              
                                         <div className="card h-100">
                                            <div className='product-img-box'> <img src={product.imgUrl} style={{height:'200px',maxWidth:'200px'}} className="card-img-top" alt="..." /></div>
                                             <div className="card-body">
@@ -33,6 +38,7 @@ const ProductComponent = ({product})=>{
                                                 <small className="fw-bold">Price : ₹ {product.price} </small>
                                             </div>
                                         </div>
+                                        </Link>
               </div> 
         </>
     )

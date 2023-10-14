@@ -1,0 +1,8 @@
+.product_imgUrl{
+    height: 350px;
+    width: 300px;
+}
+h4.display-9.fw-bold.text-body-emphasis.lh-1.mb-3{
+    border-bottom:1px solid lightgray;
+    padding-bottom:15px;
+}
